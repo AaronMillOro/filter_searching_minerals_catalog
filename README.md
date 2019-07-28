@@ -1,0 +1,1 @@
+# filter_searching_minerals_catalog
