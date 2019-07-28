@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" href='{% static "css/mineral.css" %}'>
+{% endblock%}
+
+{% block content %}
+  <ul class="minerals__container">
+    {% for mineral in minerals %}
+      <li class="minerals__item">
+        <a class="minerals__anchor" href="{% url 'mineral_details' mineral.pk %}">{{ mineral.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
