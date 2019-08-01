@@ -20,3 +20,15 @@ def mineral_details(request, pk):
                                                  'mineral':mineral,
                                                  'rand_min':rand_min
                                                  })
+
+
+def mineral_search(request):
+    """Get all minerals from a query search (term)"""
+    term = request.GET.get('query')
+    min_query = Mineral.objects.order_by('name').filter(name__icontains=term)
+    rand_min = Mineral.objects.order_by('?').first()
+    # 'minerals' and 'rand_min' are dictionaries sent to template
+    return render(request,'mineral_search.html',{
+                                        'min_query':min_query,
+                                        'rand_min':rand_min
+                                        })
