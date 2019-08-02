@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import Mineral
 
+
 def index(request):
     """Get all minerals to display on main page"""
     minerals = Mineral.objects.order_by('name').all()
@@ -10,8 +11,9 @@ def index(request):
     # 'minerals' and 'rand_min' are dictionaries sent to template
     return render(request,'index.html',{
                                         'minerals':minerals,
-                                        'rand_min':rand_min
+                                        'rand_min':rand_min,
                                         })
+
 
 def mineral_details(request, pk):
     """Get details of each mineral"""
@@ -19,7 +21,7 @@ def mineral_details(request, pk):
     rand_min = Mineral.objects.order_by('?').first()
     return render(request,'mineral_details.html',{
                                                  'mineral':mineral,
-                                                 'rand_min':rand_min
+                                                 'rand_min':rand_min,
                                                  })
 
 
@@ -39,8 +41,22 @@ def mineral_search(request):
     Q(crystal_habit__icontains=term)|Q(specific_gravity__icontains=term)
     )
     rand_min = Mineral.objects.order_by('?').first()
-    # 'minerals' and 'rand_min' are dictionaries sent to template
+    # 'min_query' and 'rand_min' are dictionaries sent to template
     return render(request,'mineral_search.html',{
                                         'min_query':min_query,
-                                        'rand_min':rand_min
+                                        'rand_min':rand_min,
+                                        })
+
+
+def letter_search(request, letter):
+    """Get all minerals with selected initial"""
+    if letter == None:
+        letter = 'A'
+    min_query = Mineral.objects.order_by('name').filter(name__startswith=letter)
+    rand_min = Mineral.objects.order_by('?').first()
+    # 'min_query' and 'rand_min' are dictionaries sent to template
+    return render(request,'mineral_search.html',{
+                                        'min_query':min_query,
+                                        'rand_min':rand_min,
+                                        'letter' :letter,
                                         })

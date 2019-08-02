@@ -1,48 +1,66 @@
 {% load static from staticfiles %}
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title> Minerals 'El dorado'</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href='{% static "css/global.css" %}'>
-  {% block extrahead %} {% endblock%}
-</head>
-<body>
-  <div class="bounds">
-    <div class="grid-100">
-      <a href="{% url 'index' %}">
-        <svg class="logo" viewBox="0 0 127.6 84.8" preserveAspectRation="xMinYMin meet">
-          <polygon points="42.7,84.8 49.6,79.4 40,62.5 51.2,43.5 51.2,43.5 25,0 0,55.6 "/>
-          <polygon class="logo--middle" points="52.9,79.5 52.9,79.5 84.8,80.1 59.7,35 43.3,62.4 "/>
-          <polygon points="127.6,61.4 127.6,61.4 110.3,13.5 110.3,13.5 70.3,48.1 70.3,48.1 88.3,80.5 95.3,81.4 95.3,81.4 "/>
-        </svg>
-        <h1 class="logo__name text-centered">'El dorado': catalog of minerals 2.0 </h1>
-      </a>
-      <p class="logo__text text-centered">They're not rocks ! by Aaron Millan-Oropeza</p>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title> Minerals 'El dorado'</title>
+    <meta name='description' content=''>
+    <meta name='author' content=''>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{% static 'css/global.css' %}'>
+    {% block extrahead %} {% endblock%}
+  </head>
+  <body>
+    <div class='bounds'>
+    <!-- Title of the site  -->
+      <div class='grid-100'>
+        <a href='{% url 'index' %}'>
+          <svg class='logo' viewBox='0 0 127.6 84.8' preserveAspectRation='xMinYMin meet'>
+          <polygon points='42.7,84.8 49.6,79.4 40,62.5 51.2,43.5 51.2,43.5 25,0 0,55.6 '/>
+          <polygon class='logo--middle' points='52.9,79.5 52.9,79.5 84.8,80.1 59.7,35 43.3,62.4 '/>
+          <polygon points='127.6,61.4 127.6,61.4 110.3,13.5 110.3,13.5 70.3,48.1 70.3,48.1 88.3,80.5 95.3,81.4 95.3,81.4 '/>
+          </svg>
+          <h1 class='logo__name text-centered'>'El dorado': catalog of minerals 2.0 </h1>
+        </a>
+        <p class='logo__text text-centered'>They're not rocks ! by Aaron Millan-Oropeza</p>
+      </div>
+    <!-- Search bar  -->
+      <div class='grid-100'>
+        <form method='GET' action={% url 'mineral_search' %}>
+          <div class='menu'>
+            <strong>SEARCH FOR A MINERAL OR ATTRIBUTE </strong>
+            <input type='search' name='query'>
+            <input type='submit' class='button' value='SEARCH'>
+          </div>
+        </form>
+      </div>
+    <!-- GROUP SEARCH  -->
+      <div class='grid-30'>
+        <strong> MINERAL GROUPS </strong><br><br>
+        <p>Pruebita 2</p>
+        <p>Pruebita 2</p>
+        <p>Pruebita 2</p>
+      </div>
+    <!-- MINERALS' LIST  -->
+      <div class='grid-70'>
+          {% block content %} {% endblock %}
+      </div>
     </div>
-
-    <div class='grid-100'>
-      <form method='GET' action={% url 'mineral_search'  %}>
-        <div class='menu'>
-          Looking for a mineral ?
-          <input type='search' name='query'>
-          <input type="submit" class="button-primary" value="SEARCH">
-        </div>
-      </form>
+    <!-- RANDOM MINERAL BUTTON  -->
+    <div class='minerals__random grid-100'>
+      <a class='minerals__anchor' href={% url 'mineral_details' rand_min.pk %}>Show random mineral</a>
+      <br><br>
+    <!-- ALPHABET SEARCH  -->
+      {% for initial in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+        {% if initial == letter %}
+          <a class='mineral__category' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
+        {% else %}
+          <a class='mineral__formula' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
+        {% endif %}
+      {% endfor %}
     </div>
-
-    <div class="grid-100">
-      {% block content %} {% endblock %}
-    </div>
-  </div>
-  <div class="minerals__random">
-    <a class="minerals__anchor" href={% url 'mineral_details' rand_min.pk %}>Show random mineral</a>
-  </div>
-</body>
+  </body>
 </html>
