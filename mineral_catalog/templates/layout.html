@@ -39,10 +39,9 @@
       </div>
     <!-- GROUP SEARCH  -->
       <div class='grid-30'>
-        <strong> MINERAL GROUPS </strong><br><br>
-        <p>Pruebita 2</p>
-        <p>Pruebita 2</p>
-        <p>Pruebita 2</p>
+        {% for group in groups %}
+          <a class='minerals__anchor' href={% url "group_search" group=group %}>{{ group }}</a>
+        {% endfor %}
       </div>
     <!-- MINERALS' LIST  -->
       <div class='grid-70'>
