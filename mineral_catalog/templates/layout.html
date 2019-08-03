@@ -39,9 +39,15 @@
       </div>
     <!-- GROUP SEARCH  -->
       <div class='grid-30'>
-        {% for group in groups %}
-          <a class='minerals__anchor' href={% url "group_search" group=group %}>{{ group }}</a>
+        <ul>
+          {% for item in groups %}
+          {% if item == group %}
+            <br><a class="mineral_group_bold" href={% url "group_search" group=item %}>{{ item }}</a>
+          {% else %}
+            <br><a class="mineral_group" href={% url "group_search" group=item %}>{{ item }}</a>
+          {% endif %}
         {% endfor %}
+      </ul>
       </div>
     <!-- MINERALS' LIST  -->
       <div class='grid-70'>
@@ -49,15 +55,15 @@
       </div>
     </div>
     <!-- RANDOM MINERAL BUTTON  -->
-    <div class='minerals__random grid-100'>
+    <div class='minerals__random'>
       <a class='minerals__anchor' href={% url 'mineral_details' rand_min.pk %}>Show random mineral</a>
       <br><br>
     <!-- ALPHABET SEARCH  -->
       {% for initial in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
         {% if initial == letter %}
-          <a class='mineral__category' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
+          <a class='mineral_letter_bold' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
         {% else %}
-          <a class='mineral__formula' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
+          <a class='mineral_letter' href={% url "letter_search" letter=initial %}>{{ initial }}</a>
         {% endif %}
       {% endfor %}
     </div>

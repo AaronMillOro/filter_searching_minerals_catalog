@@ -1,15 +1,27 @@
-body { background-color: #fdf498;}
+
 h1 { font-size: 2.2em; }
 h1:hover { margin-bottom: 2rem; font-weight: bold; sans-serif; color: #ee4035; }
-td { font-size: 1.2; font-weight: bold;}
+td { font-size: 1.2em; font-weight: bold;}
 
-
+.grid-30 { background-color: #6bd2db; }
+.grid-70 { background-color: #0c457d; }
+.grid-100 { background-color:	#ffbe4f; }
 .logo__text text-centered { font-size: 1.3em }
 
 .minerals__anchor {background-color: #67bde2; color: darkred}
-.mineral__caption { font-size: 1.2em; font-weight: bold; color: black; }
-.mineral__category { color: #0392cf }
-.mineral__image-bg { background-color: #7BC043; }
+.mineral__caption { font-size: 1.2em; font-weight: bold; color: #87ceff; }
+.mineral__category { color: #ce2020; font-weight: bold; }
+.minerals__container { background-color: #0c457d; }
+.mineral_group { border: solid 2px #ffc100; border-radius: 100px;
+  color: 	#101cb8; display: block; font-size: 13px; text-align:
+  center; padding: 8px 0 7px 0; width: 100%;
+  transition: background-color 200ms ease-in-out, font-weight 200ms ease-in-out, color 200ms ease-in-out; }
+.mineral_group_bold { background-color: #ffc100; border: solid 2px #ffc100; border-radius: 100px;
+  color: #003eff; display: block; font-size: 13px;
+  text-align: center; font-weight: bold; padding: 8px 0 7px 0; width: 100%;
+  transition: background-color 200ms ease-in-out, font-weight 200ms ease-in-out, color 200ms ease-in-out; }
+.mineral_group:hover { background-color: #ffc100; color: #003eff; font-weight: bold; }
+.mineral__image-bg { background-color: #0c457d; }
 .mineral__image { margin-top: 10px;
                   width: 300px;
                   height:300px;
@@ -17,3 +29,8 @@ td { font-size: 1.2; font-weight: bold;}
                   border: 3px solid #f37736;
 }
 .mineral__image:hover{ transform: scale(1.1) rotate(360deg); }
+.mineral_letter { color: #2fdb91; font-size: 1.5em; }
+.mineral_letter_bold { color: #ce2020;; font-size: 1.7em; font-weight: bold;}
+.mineral__name { color: #87ceff; }
+.mineral__container { background-color: #0c457d;}
+.mineral__table-container { background-color: #FFFFFF; }

@@ -85,4 +85,5 @@ def group_search(request, group):
                                         'min_query':min_query,
                                         'rand_min':rand_min,
                                         'groups':groups,
+                                        'group': group,
                                         })
