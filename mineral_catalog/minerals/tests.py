@@ -26,25 +26,39 @@ class MineralModelTest(TestCase):
 class MineralViewTest(TestCase):
     def setUp(self):
         self.mineral1 = Mineral.objects.create(
-            name= "Zoisite",
-            image_filename= "Zoisite.jpg",
-            image_caption= "Yellow zoisite crystal (1.7 x 1 x 0.8 cm)",
-            category= "Sorosilicate - epidote group",
-            group= "Silicates"
+            name= "Acanthite",
+            image_filename= "Acanthite.jpg",
+            image_caption= """Acanthite on calcite - Locality: Freiberg District,
+            Erzgebirge- Scale is one inch with a rule at one cm""",
+            category= "Sulfide",
+            color="Iron-black",
+            group= "Silicates",
             )
         self.mineral2 = Mineral.objects.create(
-            name= "Zorite",
-            image_filename= "Zorite.jpg",
-            image_caption= "Zorite",
-            category= "Inosilicate",
-            group= "Silicates"
+            name= "Alluaudite",
+            image_filename= "Alluaudite.jpg",
+            image_caption= "Alluaudite",
+            category= "Phosphate",
+            color= """Dirty yellow to brownish yellow, grayish green;
+            superficially dull greenish black, brownish black,
+            black, when altered""",
+            group= "Phosphates"
             )
         self.mineral3 = Mineral.objects.create(
             name= "Zunyite",
             image_filename= "Zunyite.jpg",
             image_caption= "Sharp, pyramids of brown-red zunyite",
             category= "Sorosilicates",
+            color="Grayish white, flesh-red; colorless in thin section",
             group= "Silicates"
+            )
+        self.mineral4 = Mineral.objects.create(
+            name= "Allanpringite",
+            image_filename= "Allanpringite.jpg",
+            image_caption= "Picture width 4 mm",
+            category= "Phosphate",
+            color="Pale brownish yellow",
+            group= "Phosphates"
             )
 
     def test_model_views(self):
@@ -53,7 +67,7 @@ class MineralViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(self.mineral3, response.context['minerals'])
         self.assertIn(self.mineral2, response.context['minerals'])
-        self.assertIn(self.mineral2, response.context['minerals'])
+        self.assertIn(self.mineral1, response.context['minerals'])
 
     def test_mineral_detail_view(self):
         response = self.client.get(reverse('mineral_details',
@@ -61,3 +75,24 @@ class MineralViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'mineral_details.html')
         self.assertEqual(self.mineral2, response.context['mineral'])
+
+    def test_group_search_view(self):
+        response = self.client.get(reverse('group_search',
+                                           kwargs={'group': 'Phosphates'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'mineral_search.html')
+        self.assertContains(response, self.mineral4.group)
+
+    def test_letter_search_view(self):
+        response = self.client.get(reverse('letter_search',
+                                           kwargs={'letter': 'A'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'mineral_search.html')
+        self.assertContains(response, self.mineral2.name)
+
+    def test_color_search_view(self):
+        response = self.client.get(reverse('color_search',
+                                           kwargs={'color': 'White'}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'mineral_search.html')
+        self.assertTrue('white' in self.mineral3.color)
