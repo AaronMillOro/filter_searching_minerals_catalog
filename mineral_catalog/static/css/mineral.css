@@ -11,6 +11,21 @@ td { font-size: 1.2em; font-weight: bold;}
 .minerals__anchor {background-color: #67bde2; color: darkred}
 .mineral__caption { font-size: 1.2em; font-weight: bold; color: #87ceff; }
 .mineral__category { color: #ce2020; font-weight: bold; }
+
+.mineral__color_black { color: #000000; font-weight: bold; }
+.mineral__color_blue { color: #004dff; font-weight: bold; }
+.mineral__color_green { color: #008026; font-weight: bold; }
+.mineral__color_orange { color: #b26200; font-weight: bold; }
+.mineral__color_pink { color: #ff00ff; font-weight: bold;  }
+.mineral__color_purple { color: #800080; font-weight: bold; }
+.mineral__color_red { color: #e40303; font-weight: bold; }
+.mineral__color_white { color: #ffffff; font-weight: bold;  }
+.mineral__color_yellow { color: #ffed00; font-weight: bold; }
+.mineral__color_bold { background-color: #ffffff; border: solid 2px #ffc100; border-radius: 10px;
+  color: #005555; font-size: 13px;
+  text-align: center; font-weight: bold; padding: 8px 5px 7px 5px;  }
+
+.mineral__container { background-color: #0c457d;}
 .minerals__container { background-color: #0c457d; }
 .mineral_group { border: solid 2px #ffc100; border-radius: 100px;
   color: 	#101cb8; display: block; font-size: 13px; text-align:
@@ -29,8 +44,7 @@ td { font-size: 1.2em; font-weight: bold;}
                   border: 3px solid #f37736;
 }
 .mineral__image:hover{ transform: scale(1.1) rotate(360deg); }
-.mineral_letter { color: #2fdb91; font-size: 1.5em; }
-.mineral_letter_bold { color: #ce2020;; font-size: 1.7em; font-weight: bold;}
+.mineral_letter { color: #2fdb91; font-size: 1em; }
+.mineral_letter_bold { color: #ce2020;; font-size: 1em; font-weight: bold;}
 .mineral__name { color: #87ceff; }
-.mineral__container { background-color: #0c457d;}
 .mineral__table-container { background-color: #FFFFFF; }

@@ -29,6 +29,7 @@
       </div>
     <!-- Search bar  -->
       <div class='grid-100'>
+        <p>
         <form method='GET' action={% url 'mineral_search' %}>
           <div class='menu'>
             <strong>SEARCH FOR A MINERAL OR ATTRIBUTE </strong>
@@ -36,16 +37,47 @@
             <input type='submit' class='button' value='SEARCH'>
           </div>
         </form>
+        </p>
+      </div>
+    <!-- Search by color -->
+      <div class='grid-100'>
+        <p class='h2'><strong>COLOR OF MINERAL:</strong>
+        {% for current_color in colors %}
+          {% if current_color == color %}
+            <a class='mineral__color_bold' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+          {% else %}
+            {% if current_color == 'Red' %}
+              <a class='mineral__color_red' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Orange' %}
+              <a class='mineral__color_orange' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Yellow' %}
+              <a class='mineral__color_yellow' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Green' %}
+              <a class='mineral__color_green' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Blue' %}
+              <a class='mineral__color_blue' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Pink' %}
+              <a class='mineral__color_pink' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Purple' %}
+              <a class='mineral__color_purple' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'White' %}
+              <a class='mineral__color_white' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% elif current_color == 'Black' %}
+              <a class='mineral__color_black' href={% url 'color_search' color=current_color %}>{{ current_color }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        </p>
       </div>
     <!-- GROUP SEARCH  -->
       <div class='grid-30'>
         <ul>
           {% for item in groups %}
-          {% if item == group %}
-            <br><a class="mineral_group_bold" href={% url "group_search" group=item %}>{{ item }}</a>
-          {% else %}
-            <br><a class="mineral_group" href={% url "group_search" group=item %}>{{ item }}</a>
-          {% endif %}
+            {% if item == group %}
+              <a class="mineral_group_bold" href={% url "group_search" group=item %}>{{ item }}</a>
+            {% else %}
+              <a class="mineral_group" href={% url "group_search" group=item %}>{{ item }}</a>
+            {% endif %}
         {% endfor %}
       </ul>
       </div>
@@ -67,5 +99,6 @@
         {% endif %}
       {% endfor %}
     </div>
+
   </body>
 </html>
