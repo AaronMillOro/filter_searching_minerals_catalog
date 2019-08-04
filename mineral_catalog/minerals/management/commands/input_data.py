@@ -1,10 +1,5 @@
 """
 Logic to add multiple rows into Model generated in Django.
-Kind acknowledgements to Happiness Nwosu and Vitor Freitas
-for they posts that helped me to make part of the code
-sources:
-https://tinyurl.com/y52r7lya
-https://tinyurl.com/y67my58o
 """
 import os
 import json
