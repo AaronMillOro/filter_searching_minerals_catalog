@@ -1,6 +1,6 @@
 # Catalog of minerals with Django 2.0
 
-This project is an extension of a previous [one](https://github.com/AaronMillOro/User_Profile_Django) with search filters implented to seek for minerals in function or different criteria. The minerals were already loaded from a [JSON file](https://github.com/AaronMillOro/filter_searching_minerals_catalog/tree/master/mineral_catalog/minerals/resources) using a built-in function named [**input data**](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/minerals/management/commands/input_data.py). 
+This project is an extension of a previous [one](https://github.com/AaronMillOro/Mineral_catalog_Django) with search filters implented to seek for minerals in function or different criteria. The minerals were already loaded from a [JSON file](https://github.com/AaronMillOro/filter_searching_minerals_catalog/tree/master/mineral_catalog/minerals/resources) using a built-in function named [**input data**](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/minerals/management/commands/input_data.py). 
 
 #Project description
 * The alphabet list allows to show all the minerals starting with the **selected letter**. The letter of the alphabet currently being displayed is bolded, letter ‘A’ is selected by default at homepage.
@@ -17,6 +17,8 @@ This project is an extension of a previous [one](https://github.com/AaronMillOro
 * **Unit tests** were performed to the app. A [coverage report](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/htmlcov/index.html) is available for classes, models and views (more than 50%).
 
 * Templates match the style provided for this project. Style changes were added to a custom CSS file. 
+
+![Figure display](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/minerals/resources/home_page.png)
 
 # Test the app
 1. Set the repertory **filter_searching_minerals_catalog/**, install (if required) and run pipenv.
