@@ -16,8 +16,8 @@ def index(request, letter=None):
     """Get all minerals to display on main page"""
     if letter == None:
         letter = 'A'
-    minerals = Mineral.objects.order_by('name').all()
-    rand_min = Mineral.objects.order_by('?').first()
+    minerals = Mineral.objects.only('name','pk').order_by('name').all()
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'index.html',{
@@ -32,7 +32,7 @@ def index(request, letter=None):
 def mineral_details(request, pk):
     """Get details of each mineral"""
     mineral = get_object_or_404(Mineral, pk=pk)
-    rand_min = Mineral.objects.order_by('?').first()
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'mineral_details.html',{
@@ -46,7 +46,7 @@ def mineral_details(request, pk):
 def mineral_search(request):
     """Get all minerals from a query search (term)"""
     term = request.GET.get('query')
-    min_query = Mineral.objects.order_by('name').filter(
+    min_query = Mineral.objects.only('name','pk').order_by('name').filter(
     Q(name__icontains=term)|Q(image_caption__icontains=term)|
     Q(category__icontains=term)|Q(formula__icontains=term)|
     Q(strunz_classification__icontains=term)|Q(color__icontains=term)|
@@ -58,7 +58,7 @@ def mineral_search(request):
     Q(refractive_index__icontains=term)|Q(group__icontains=term)|
     Q(crystal_habit__icontains=term)|Q(specific_gravity__icontains=term)
     )
-    rand_min = Mineral.objects.order_by('?').first()
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'mineral_search.html',{
@@ -71,8 +71,10 @@ def mineral_search(request):
 
 def letter_search(request, letter):
     """Get all minerals with selected initial"""
-    min_query = Mineral.objects.order_by('name').filter(name__startswith=letter)
-    rand_min = Mineral.objects.order_by('?').first()
+    min_query = Mineral.objects.only('name','pk').order_by('name').filter(
+        name__startswith=letter
+    )
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'mineral_search.html',{
@@ -86,10 +88,10 @@ def letter_search(request, letter):
 
 def group_search(request, group):
     """Get all minerals from a group"""
-    min_query = Mineral.objects.order_by('name').filter(
+    min_query = Mineral.objects.only('name','pk').order_by('name').filter(
         group__icontains=group
     )
-    rand_min = Mineral.objects.order_by('?').first()
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'mineral_search.html',{
@@ -103,10 +105,10 @@ def group_search(request, group):
 
 def color_search(request, color):
     """ Search option based on color """
-    min_query = Mineral.objects.order_by('name').filter(
+    min_query = Mineral.objects.only('name','pk').order_by('name').filter(
         color__icontains=color
     )
-    rand_min = Mineral.objects.order_by('?').first()
+    rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
     return render(request,'mineral_search.html', {
