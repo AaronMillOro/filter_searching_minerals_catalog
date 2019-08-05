@@ -11,7 +11,7 @@ This project is an extension of a previous [one](https://github.com/AaronMillOro
 
 * Minerals list can also be displayed in function of a **selected color**.
    
-* Database queries were optimized to last  less than 10ms. The **django-debug-toolbar** was used to check queries timing.
+* Database queries were optimized to last less than 10ms. The **django-debug-toolbar** was used to check queries timing.
 
 
 * **Unit tests** were performed to the app. A [coverage report](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/htmlcov/index.html) is available for classes, models and views (more than 50%).
@@ -21,9 +21,9 @@ This project is an extension of a previous [one](https://github.com/AaronMillOro
 ![Figure display](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/minerals/resources/home_page.png)
 
 # Test the app
-1. Set the repertory **filter_searching_minerals_catalog/**, install (if required) and run pipenv.
+1. Set the repertory **filter_searching_minerals_catalog/**, install (if required) and run pipenv. PLEASE TEST THE APP ON python 3.6.x
 
-		> pipenv install
+		> pipenv install --python 3.6
 		
 		> pipenv shell
 
