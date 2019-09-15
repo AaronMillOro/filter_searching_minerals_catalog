@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import Mineral
 
-
 groups = ['Silicates','Oxides','Sulfates','Sulfides','Carbonates',
           'Halides','Sulfosalts','Phosphates','Borates','Organic Minerals',
           'Arsenates','Native Elements','Other']
@@ -20,14 +19,10 @@ def index(request, letter=None):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'index.html',{
-                                        'minerals':minerals,
-                                        'rand_min':rand_min,
-                                        'letter':letter,
-                                        'groups':groups,
-                                        'colors':colors,
-                                        })
-
+    return render(request,'index.html',
+        {'minerals':minerals, 'rand_min':rand_min, 'letter':letter,
+         'groups':groups, 'colors':colors,}
+    )
 
 def mineral_details(request, pk):
     """Get details of each mineral"""
@@ -35,13 +30,10 @@ def mineral_details(request, pk):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'mineral_details.html',{
-                                                 'mineral':mineral,
-                                                 'rand_min':rand_min,
-                                                 'groups':groups,
-                                                 'colors':colors,
-                                                 })
-
+    return render(request,'mineral_details.html',
+        {'mineral':mineral,'rand_min':rand_min,'groups':groups,
+         'colors':colors,}
+    )
 
 def mineral_search(request):
     """Get all minerals from a query search (term)"""
@@ -61,13 +53,10 @@ def mineral_search(request):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'mineral_search.html',{
-                                                'min_query':min_query,
-                                                'rand_min':rand_min,
-                                                'groups':groups,
-                                                'colors':colors,
-                                                })
-
+    return render(request,'mineral_search.html',
+        {'min_query':min_query, 'rand_min':rand_min, 'groups':groups,
+         'colors':colors,}
+    )
 
 def letter_search(request, letter):
     """Get all minerals with selected initial"""
@@ -77,14 +66,10 @@ def letter_search(request, letter):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'mineral_search.html',{
-                                                'min_query':min_query,
-                                                'rand_min':rand_min,
-                                                'letter' :letter,
-                                                'groups':groups,
-                                                'colors':colors,
-                                                })
-
+    return render(request,'mineral_search.html',
+        {'min_query':min_query,'rand_min':rand_min,'letter' :letter,
+         'groups':groups,'colors':colors,}
+    )
 
 def group_search(request, group):
     """Get all minerals from a group"""
@@ -94,14 +79,10 @@ def group_search(request, group):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'mineral_search.html',{
-                                                'min_query':min_query,
-                                                'rand_min':rand_min,
-                                                'groups':groups,
-                                                'group': group,
-                                                'colors':colors,
-                                                })
-
+    return render(request,'mineral_search.html',
+        {'min_query':min_query,'rand_min':rand_min,'groups':groups,
+         'group': group,'colors':colors,}
+    )
 
 def color_search(request, color):
     """ Search option based on color """
@@ -111,10 +92,7 @@ def color_search(request, color):
     rand_min = Mineral.objects.only('name','pk').order_by('?').first()
     groups
     colors
-    return render(request,'mineral_search.html', {
-                                                 'min_query':min_query,
-                                                 'rand_min':rand_min,
-                                                 'groups':groups,
-                                                 'colors':colors,
-                                                 'color':color,
-                                                 })
+    return render(request,'mineral_search.html',
+        {'min_query':min_query,'rand_min':rand_min,'groups':groups,
+         'colors':colors,'color':color,}
+    )

@@ -71,7 +71,7 @@ class MineralViewTest(TestCase):
 
     def test_mineral_detail_view(self):
         response = self.client.get(reverse('mineral_details',
-                                       kwargs={'pk': self.mineral2.pk}))
+            kwargs={'pk': self.mineral2.pk}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'mineral_details.html')
         self.assertEqual(self.mineral2, response.context['mineral'])
@@ -85,14 +85,14 @@ class MineralViewTest(TestCase):
 
     def test_letter_search_view(self):
         response = self.client.get(reverse('letter_search',
-                                           kwargs={'letter': 'A'}))
+            kwargs={'letter': 'A'}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'mineral_search.html')
         self.assertContains(response, self.mineral2.name)
 
     def test_color_search_view(self):
         response = self.client.get(reverse('color_search',
-                                           kwargs={'color': 'White'}))
+            kwargs={'color': 'White'}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'mineral_search.html')
         self.assertTrue('white' in self.mineral3.color)

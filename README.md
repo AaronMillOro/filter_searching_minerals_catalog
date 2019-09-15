@@ -14,7 +14,10 @@ This project is an extension of a previous [one](https://github.com/AaronMillOro
 * Database queries were optimized to last less than 10ms. The **django-debug-toolbar** was used to check queries timing.
 
 
-* **Unit tests** were performed to the app. A [coverage report](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/htmlcov/index.html) is available for classes, models and views (more than 50%).
+* **Unit tests** were performed to the app. A coverage report was generated and is available by typing, in the root directory, the following code:
+
+		coverage run --source '.' manage.py test minerals
+		coverage report		
 
 * Templates match the style provided for this project. Style changes were added to a custom CSS file. 
 
@@ -23,18 +26,18 @@ This project is an extension of a previous [one](https://github.com/AaronMillOro
 # Test the app
 1. Set the repertory **filter_searching_minerals_catalog/**, install (if required) and run pipenv. PLEASE TEST THE APP ON python 3.6.x
 
-		> pipenv install --python 3.6
+		pipenv install --python 3.6
 		
-		> pipenv shell
+		pipenv shell
 
 2. Download the corresponding dependencies in the virtual environment. 
 
-		> pip install -r requirements.txt
+		pip install -r requirements.txt
 		
 
 3. In the root directory (filter_searching_minerals_catalog/mineral_catalog/) run the application.
 		
-		> python3 manage.py runserver 0.0.0.0:5000
+		python3 manage.py runserver 0.0.0.0:5000
 
 4. Open your favorite web browser and type:
 
