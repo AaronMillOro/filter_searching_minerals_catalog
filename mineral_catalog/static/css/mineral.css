@@ -45,6 +45,6 @@ td { font-size: 1.2em; font-weight: bold;}
 }
 .mineral__image:hover{ transform: scale(1.1) rotate(360deg); }
 .mineral_letter { color: #2fdb91; font-size: 1em; }
-.mineral_letter_bold { color: #ce2020;; font-size: 1em; font-weight: bold;}
+.mineral_letter_bold { color: #ce2020; font-size: 1em; font-weight: bold;}
 .mineral__name { color: #87ceff; }
 .mineral__table-container { background-color: #FFFFFF; }
