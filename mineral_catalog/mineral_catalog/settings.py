@@ -12,16 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-def get_env_variable(var_name):
-    try:
-        return os.environ[var.name]
-    except KeyError:
-        error_msg = "Set {} env variable".format(var_name)
-        if DEBUG:
-            warning.warn(error_msg)
-        else:
-            raise ImproperlyConfigured(error_msg)
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,9 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#byf0&ja&ihor)bvfr50scwb_*lce!x_9)-zq+kn#dw_4ui@8i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com',]
 
 
 # Application definition
@@ -149,5 +141,5 @@ INTERNAL_IPS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
