@@ -1,4 +1,4 @@
-# [Catalog of minerals with Django 2.0](http://AaronMillOro.pythonanywhere.com)
+# [Catalog of minerals 2.0 with Django](http://AaronMillOro.pythonanywhere.com)
 
 This project is an extension of a previous [one](https://github.com/AaronMillOro/Mineral_catalog_Django) with search filters implented to seek for minerals in function or different criteria. The minerals were already loaded from a [JSON file](https://github.com/AaronMillOro/filter_searching_minerals_catalog/tree/master/mineral_catalog/minerals/resources) using a built-in function named [**input data**](https://github.com/AaronMillOro/filter_searching_minerals_catalog/blob/master/mineral_catalog/minerals/management/commands/input_data.py). 
 
